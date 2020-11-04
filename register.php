@@ -6,8 +6,8 @@
         <h2>Registration Page</h2>
         <a href="index.php">Click here to go back</a><br/><br/>
         <form action="register.php" method="POST">
-           Enter Username: <input type="text" name="username" required="required" /> <br/>
-           Enter password: <input type="password" name="password" required="required" /> <br/>
+           Email: <input type="text" name="email" required="required" /> <br/>
+           Password: <input type="password" name="password" required="required" /> <br/>
            <input type="submit" value="Register"/>
         </form>
     </body>
