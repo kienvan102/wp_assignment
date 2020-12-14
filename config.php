@@ -1,12 +1,5 @@
 <?php
-   define('DB_SERVER', 'localhost');
-   define('DB_USERNAME', 'user');
-   define('DB_PASSWORD', 'password');
-   define('DB_DATABASE', 'online_shop');
-   $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   if (!$conn) {
-      die('Not connected : ' . mysql_error());
-   }
-
-   
-?>
+define("DB_HOST", "localhost");
+define("DB_USER", "username");
+define("DB_PASS", "password");
+define("DB_NAME", "online_shop");

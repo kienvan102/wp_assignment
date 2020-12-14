@@ -1,64 +1,56 @@
+<?php include 'inc/header.php'; ?>
+<?php include 'inc/slider.php'; ?>
 
 
-<?php
-    //echo $_SESSION['userType'];
-    include("session.php");
-    //session_start();
-    echo $_SESSION['userType'] .'<br>';
-    
-    $sessionId = session_id();
+ <div class="main">
+    <div class="content">
+    	<div class="content_top">
+    		<div class="heading">
+    		<h3>Male Products</h3>
+    		</div>
+    		<div class="clear"></div>
+    	</div>
+	      <div class="section group">
+	      	<?php 
+              $getFpd = $pd->getBrandProductMales();
+              if ($getFpd) {
+                  while ($result = $getFpd->fetch_assoc()) {
+                      ?>
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="details.php?proId=<?php echo $result['productId']; ?>"><img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+					 <h2><?php echo $result['productName']; ?></h2>
+					 <p><span class="price"><?php echo $result['price']; ?></span></p>
+				     <div class="button"><span><a href="details.php?proId=<?php echo $result['productId']; ?>" class="details">Details</a></span></div>
+				</div>
+				<?php
+                  }
+              } ?>
+			</div>
+			<div class="content_bottom">
+    		<div class="heading">
+    		<h3>Female Products</h3>
+    		</div>
+    		<div class="clear"></div>
+    	</div>
+			<div class="section group">
+				<?php 
+              $getNpd = $pd->getBrandProductFemales();
+              if ($getNpd) {
+                  while ($result = $getNpd->fetch_assoc()) {
+                      ?>
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="details.php?proId=<?php echo $result['productId']; ?>"><img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+					 <h2><?php echo $result['productName']; ?></h2>
+					 <p><span class="price"><?php echo $result['price']; ?></span></p>
+				     <div class="button"><span><a href="details.php?proId=<?php echo $result['productId']; ?>" class="details">Details</a></span></div>
+				</div>
+				
+				<?php
+                  }
+              } ?>
+				
+			</div>
+    </div>
+ </div>
 
-    $cookie_name = "guest_session";
-                    
-    setcookie($cookie_name, $sessionId, time() + (86400 * 15), "/");
-
-    
-?>
-
-
-
-
-<html>
-    <head>
-        <title>My first PHP Website</title>
-    </head>
-    <body>
-        <?php
-            include("config.php");
-
-            if(!isset($_COOKIE[$cookie_name])){ //guest first visit 
-            
-                $_SESSION["lastAccesDate"] = $lastAccesDate = date("Y-m-d H:i:s");
-                $_SESSION["expiredDate"] = $expiredDate = date("Y-m-d H:i:s" ,strtotime(date("Y-m-d H:i:s"). "+ 15 days"));
-                $_SESSION["userType"] = 'guest';
-                $sql = "INSERT INTO session (session_id, last_access_date, expired_date)
-                VALUES ('$sessionId', '$lastAccesDate', '$expiredDate')";
-
-                if ($conn->query($sql) === FALSE) {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            else{  // guest from second visit
-                
-                $sql ="SELECT * from session where session_id = '$_COOKIE[$cookie_name]'";
-                $result = $conn->query($sql);
-                $row = $result->fetch_assoc();
-
-                echo 'your session id: ' . $row['session_id'];
-                echo 'expired date: ' . $row['expired_date'];
-                setcookie($cookie_name,  $row['session_id'], time() + (86400 * 15), "/");
-                
-                //$_SESSION["userType"] = 'guest';
-            }
-            
-        ?>
-        <?php
-            
-            echo "<p>Hello World!</p>";
-            echo "role: " . $_SESSION['userType'];
-        ?>
-        <a href="login.php"> Click here to login </a>
-        <br>
-        <a href="register.php"> Click here to register</a> 
-    </body>
-</html>
+<?php include 'inc/footer.php'; ?>

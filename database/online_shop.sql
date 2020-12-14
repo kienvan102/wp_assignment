@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 04, 2020 at 02:42 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Host: localhost
+-- Generation Time: Dec 14, 2020 at 06:06 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,293 +24,323 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE `blog` (
-  `blog_id` int(11) NOT NULL,
-  `title` text DEFAULT NULL,
-  `content` text DEFAULT NULL,
-  `thumbnail` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_admin` (
+  `adminId` int(11) NOT NULL,
+  `adminName` varchar(255) NOT NULL,
+  `adminUser` varchar(255) NOT NULL,
+  `adminEmail` varchar(255) NOT NULL,
+  `adminPass` varchar(32) NOT NULL,
+  `lavel` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminUser`, `adminEmail`, `adminPass`, `lavel`) VALUES
+(1, 'Tri', 'admin', 'admin@gmail.com', 'admin', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Table structure for table `tbl_brand`
 --
 
-CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_brand` (
+  `brandId` int(11) NOT NULL,
+  `brandName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_brand`
+--
+
+INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
+(1, 'Females'),
+(4, 'Kids'),
+(5, 'Males');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Table structure for table `tbl_cart`
 --
 
-CREATE TABLE `item` (
-  `item_id` int(11) NOT NULL,
-  `item_name` varchar(255) DEFAULT NULL,
-  `item_image` text DEFAULT NULL,
-  `item_price` int(11) DEFAULT NULL,
-  `color` varchar(30) DEFAULT NULL,
-  `size` varchar(10) DEFAULT NULL,
-  `item_status` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_cart` (
+  `cartId` int(11) NOT NULL,
+  `sId` varchar(255) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` float NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`cartId`, `sId`, `productId`, `productName`, `price`, `quantity`, `image`) VALUES
+(3, 'a31622a7038b61d5858b5b9a150d22a5', 10, 'Camera', 550, 1, 'upload/c769967566.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `tbl_category`
 --
 
-CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `order_name` varchar(50) DEFAULT NULL,
-  `order_address` text DEFAULT NULL,
-  `order_phone` varchar(20) DEFAULT NULL,
-  `total_price` int(11) DEFAULT NULL,
-  `order_status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_category` (
+  `catId` int(11) NOT NULL,
+  `catName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_category`
+--
+
+INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
+(1, 'Males Shirt'),
+(2, 'Males T-Shirt'),
+(16, 'Females Shirt'),
+(17, 'Females T-Shirt');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_item`
+-- Table structure for table `tbl_compare`
 --
 
-CREATE TABLE `order_item` (
-  `order_item_id` int(11) NOT NULL,
-  `order_id` int(11) DEFAULT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_compare` (
+  `id` int(11) NOT NULL,
+  `cmrId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` float(10,2) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `session`
+-- Table structure for table `tbl_customers`
 --
 
-CREATE TABLE `session` (
-  `session_id` varchar(50) NOT NULL,
-  `last_access_date` datetime DEFAULT NULL,
-  `expired_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `address` text NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `country` varchar(30) NOT NULL,
+  `zip` varchar(30) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pass` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_customers`
+--
+
+INSERT INTO `tbl_customers` (`id`, `name`, `address`, `city`, `country`, `zip`, `phone`, `email`, `pass`) VALUES
+(1, 'Tri', '58/22 Dong Nai', 'Ho Chi Minh city', 'VietNam', '1219', '01974353555', 'tri@gmail.com', '123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `session_item`
+-- Table structure for table `tbl_order`
 --
 
-CREATE TABLE `session_item` (
-  `session_item_id` int(11) NOT NULL,
-  `session_id` varchar(50) DEFAULT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_order` (
+  `id` int(11) NOT NULL,
+  `cmrId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id`, `cmrId`, `productId`, `productName`, `quantity`, `price`, `image`, `date`, `status`) VALUES
+(12, 1, 9, 'Monitor', 1, 5000, 'upload/ae748749b8.jpg', '2018-03-02 12:29:03', 2),
+(13, 1, 10, 'Camera', 3, 1650, 'upload/c769967566.jpg', '2018-03-02 12:29:03', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `store`
+-- Table structure for table `tbl_product`
 --
 
-CREATE TABLE `store` (
-  `store_id` int(11) NOT NULL,
-  `longitude` varchar(255) DEFAULT NULL,
-  `latitude` varchar(255) DEFAULT NULL,
-  `store_address` varchar(255) DEFAULT NULL,
-  `store_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_product` (
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `catId` int(11) NOT NULL,
+  `brandId` int(11) NOT NULL,
+  `body` text NOT NULL,
+  `price` float NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `store`
+-- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `store` (`store_id`, `longitude`, `latitude`, `store_address`, `store_name`) VALUES
-(1, '106.630389', '10.714917', '2904 Pham The Hien, P7, Q8, TPHCM', 'Home Store'),
-(2, '106.693681', '10.770319', '90 Le Lai, Quan 1, TPHCM', 'The New Playground store');
+INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `body`, `price`, `image`, `type`) VALUES
+(11, 'Shirt 1', 1, 5, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 12.9, 'upload/1.jpg', 1),
+(12, 'Shirt 2', 1, 5, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 24.9, 'upload/2.jpg', 1),
+(13, 'T- Shirt 3', 2, 5, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/3.jpg', 1),
+(14, 'T - Shirt 4', 2, 5, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/4.jpg', 1),
+(15, 'Female Shirt 6', 16, 1, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/5.jpg', 0),
+(16, 'Female Shirt 5', 16, 1, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/6.jpg', 0),
+(17, 'Female T-Shirt 7', 17, 1, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/7.jpg', 0),
+(18, 'Female T-Shirt 8', 17, 1, 'FREE Pick-up in UNIQLO store\r\nGet free express delivery when you spend over £70!', 20, 'upload/8.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `tbl_wlist`
 --
 
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `user_type` varchar(20) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `address` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_wlist` (
+  `id` int(11) NOT NULL,
+  `cmrId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` float(10,2) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `tbl_wlist`
 --
 
-INSERT INTO `user` (`user_id`, `user_type`, `first_name`, `last_name`, `email`, `phone`, `password`, `address`) VALUES
-(1, 'user', NULL, NULL, 'thong@gmail.com', NULL, '00822c780b7e4c7a0e4b887d41ca0155', NULL),
-(2, 'admin', NULL, NULL, 'admin@gmail.com', NULL, '21232f297a57a5a743894a0e4a801fc3', NULL);
+INSERT INTO `tbl_wlist` (`id`, `cmrId`, `productId`, `productName`, `price`, `image`) VALUES
+(6, 1, 7, 'Fan', 880.00, 'upload/8f9f7b4ade.jpg');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `blog`
+-- Indexes for table `tbl_admin`
 --
-ALTER TABLE `blog`
-  ADD PRIMARY KEY (`blog_id`);
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`adminId`);
 
 --
--- Indexes for table `cart`
+-- Indexes for table `tbl_brand`
 --
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `item_id` (`item_id`);
+ALTER TABLE `tbl_brand`
+  ADD PRIMARY KEY (`brandId`);
 
 --
--- Indexes for table `item`
+-- Indexes for table `tbl_cart`
 --
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`);
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`cartId`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `tbl_category`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `user_id` (`user_id`);
+ALTER TABLE `tbl_category`
+  ADD PRIMARY KEY (`catId`);
 
 --
--- Indexes for table `order_item`
+-- Indexes for table `tbl_compare`
 --
-ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`order_item_id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `item_id` (`item_id`);
+ALTER TABLE `tbl_compare`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `session`
+-- Indexes for table `tbl_customers`
 --
-ALTER TABLE `session`
-  ADD PRIMARY KEY (`session_id`);
+ALTER TABLE `tbl_customers`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `session_item`
+-- Indexes for table `tbl_order`
 --
-ALTER TABLE `session_item`
-  ADD PRIMARY KEY (`session_item_id`),
-  ADD KEY `session_id` (`session_id`),
-  ADD KEY `item_id` (`item_id`);
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `store`
+-- Indexes for table `tbl_product`
 --
-ALTER TABLE `store`
-  ADD PRIMARY KEY (`store_id`);
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`productId`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `tbl_wlist`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `tbl_wlist`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT for table `tbl_admin`
 --
-ALTER TABLE `blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_admin`
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT for table `tbl_brand`
 --
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_brand`
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `item`
+-- AUTO_INCREMENT for table `tbl_cart`
 --
-ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_cart`
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `tbl_category`
 --
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_category`
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `order_item`
+-- AUTO_INCREMENT for table `tbl_compare`
 --
-ALTER TABLE `order_item`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_compare`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `session_item`
+-- AUTO_INCREMENT for table `tbl_customers`
 --
-ALTER TABLE `session_item`
-  MODIFY `session_item_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `store`
+-- AUTO_INCREMENT for table `tbl_order`
 --
-ALTER TABLE `store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tbl_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `tbl_product`
 --
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tbl_product`
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `tbl_wlist`
 --
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`);
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `order_item`
---
-ALTER TABLE `order_item`
-  ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`);
-
---
--- Constraints for table `session_item`
---
-ALTER TABLE `session_item`
-  ADD CONSTRAINT `session_item_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `session` (`session_id`),
-  ADD CONSTRAINT `session_item_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`);
+ALTER TABLE `tbl_wlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
