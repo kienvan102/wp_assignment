@@ -6,7 +6,9 @@
     <div class="content">
     	<div class="content_top">
     		<div class="heading">
-    		<h3>Male Products</h3>
+			<h3> <a href="products-males.php" style="text-decoration: none">Male Products </a>
+			<!-- <span class="more"> <a href="products-males.php" style="text-decoration: none;">More	</a></span> -->
+			</h3>
     		</div>
     		<div class="clear"></div>
     	</div>
@@ -23,12 +25,14 @@
 				     <div class="button"><span><a href="details.php?proId=<?php echo $result['productId']; ?>" class="details">Details</a></span></div>
 				</div>
 				<?php
-                  }
-              } ?>
+				  }
+			  } ?>
+			  <br>
+			  <a class='more' href="products-males.php"> More >> </a>
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
-    		<h3>Female Products</h3>
+    		<h3> <a href="products-females.php" style="text-decoration: none"> Female Products </a> </h3>
     		</div>
     		<div class="clear"></div>
     	</div>
@@ -48,7 +52,8 @@
 				<?php
                   }
               } ?>
-				
+				<br>
+				<a class='more' href="products-males.php"> More >> </a>
 			</div>
     </div>
  </div>

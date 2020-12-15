@@ -56,6 +56,11 @@ $cmr = new Customer();
       display:inline-block;
       width: 32%;
     }
+
+    .more {
+      padding: 10px;
+      text-decoration: none;
+    }
 </style>
 </head>
 <body>
