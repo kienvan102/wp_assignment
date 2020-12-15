@@ -78,7 +78,7 @@ class Customer
             Session::set("cuslogin", true);
             Session::set("cmrId", $value['id']);
             Session::set("cmrName", $value['name']);
-            header("Location:cart.php");
+            // header("Location:index.php");
         } else {
             $msg = "<span class='error'>Email or Passowrd not matched!</span>";
             return $msg;

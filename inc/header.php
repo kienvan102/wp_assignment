@@ -98,22 +98,7 @@ $cmr = new Customer();
                       Session::destroy();
                   }
                    ?>
-       <div class="login">
-        <?php 
-$login = Session::get("cuslogin");
-if ($login == false) {
-    ?>
-    <a href="login.php">Login</a>
-<?php
-} else {
-        ?>
-<a href="?cid=<?php Session::get('cmrId'); ?>">Logout</a>
-<?php
-    }
- ?>
-        
-
-       </div>
+      
      <div class="clear"></div>
    </div>
    <div class="clear"></div>
@@ -153,12 +138,11 @@ if ($login == false) {
         <?php 
         $login = Session::get("cuslogin");
           if ($login == true) {
-        ?>
-        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-        <?php
-        }
-        ?>
-        
+            ?>
+            <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+            <?php
+          }
+          ?>        
         <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a> </li>
         <div class="clear"></div>
 
@@ -183,7 +167,20 @@ if ($login == false) {
               <a class="dropdown-item" href="products-kids.php">T-Shirts</a>
             </div>
         </li>
-
+        <li class="nav-item dropdown">
+          <?php 
+            $login = Session::get("cuslogin");
+            if ($login == false) {
+                ?>
+                <a class="nav-link" href="login.php">Login</a>
+            <?php
+            } else {
+                    ?>
+            <a class="nav-link" href="?cid=<?php Session::get('cmrId'); ?>">Logout</a>
+            <?php
+                }
+            ?>
+        </li>
       </ul>
     </div>
   </nav>

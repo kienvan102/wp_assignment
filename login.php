@@ -6,9 +6,11 @@ if ($login == true) {
 }
  ?>
 <?php 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-    $custLogin = $cmr->customerLogin($_POST);
+	$custLogin = $cmr->customerLogin($_POST);
+	?>
+	<script> location.replace("index.php"); </script>
+	<?php
 }
 ?>
  <div class="main">
@@ -91,4 +93,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
     </div>
  </div>
 <?php include 'inc/footer.php'; ?>
-
