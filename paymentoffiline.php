@@ -11,9 +11,11 @@ if (isset($_GET['orderid']) && $_GET['orderid'] == 'order') {
     $insertOrder = $ct->orderProduct($cmrId);
     
     $delData = $ct->delCustomerCart();
-    header("Location:success.php");
+    ?>
+	<script> location.replace('success.php'); </script>
+	<?php
 }
-  ?>
+?>
 <style type="text/css">
 .division{width:50%; float:left;}
 .tblone{width: 95%; margin-right:15px; border:2px solid #ddd;}

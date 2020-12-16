@@ -2,7 +2,7 @@
 <?php include 'inc/slider.php'; ?>
 
 
- <div class="main">
+ <div class="container">
     <div class="content">
     	<div class="content_top">
     		<div class="heading">

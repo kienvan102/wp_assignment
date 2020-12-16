@@ -61,11 +61,15 @@ $cmr = new Customer();
       padding: 10px;
       text-decoration: none;
     }
+
+    a {
+      text-decoration: none
+    }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="header_top">
+  <div class="">
+    <div class="">
       <div class="logo">
         <a href="index.php"><h1 style="font-size:50px;color:green;">T-Shirt Shop</h1></a>
       </div>
@@ -77,20 +81,20 @@ $cmr = new Customer();
           </div>
           <div class="shopping_cart">
           <div class="cart">
-            <a href="#" title="View my shopping cart" rel="nofollow">
-                <span class="cart_title">Cart</span>
+            <a href="cart.php" title="View my shopping cart" rel="nofollow">
+                <span class="cart_title"><a href="cart.php"> Cart </a> </span>
                 <span class="no_product">
                 <?php 
-                                $getData = $ct->checkCartItem();
-                                if ($getData) {
-                                    $sum = Session::get("gTotal");
-                                    $qty = Session::get("qty");
-                                    echo "$".number_format($sum).".00"." | Qty: ".$qty;
-                                } else {
-                                    echo '(Empty)';
-                                }
-                                
-                                 ?>
+                  $getData = $ct->checkCartItem();
+                  if ($getData) {
+                      $sum = Session::get("gTotal");
+                      $qty = Session::get("qty");
+                      echo "$".number_format($sum).".00"." | Qty: ".$qty;
+                  } else {
+                      echo '(Empty)';
+                  }
+                  
+                    ?>
                 </span>
               </a>
             </div>
@@ -110,7 +114,7 @@ $cmr = new Customer();
  </div>
 
 <div class="menu">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
     <a class="navbar-brand" href="index.php">Home</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
@@ -121,15 +125,6 @@ $cmr = new Customer();
           <a class="nav-link" href="#">Blogs</a>
         </li>
 
-        <?php 
-        $chkCart = $ct->checkCartItem();
-        if ($chkCart) {
-          ?>
-        <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="payment.php">Payment</a></li>
-        <?php
-        }
-        ?>
         <?php
         $cmrId = Session::get("cmrId");
         $chkOrder = $ct->checkOrder($cmrId);
@@ -148,30 +143,8 @@ $cmr = new Customer();
             <?php
           }
           ?>        
-        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a> </li>
-        <div class="clear"></div>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Products
-          </a>
-          <div class="dropdown-menu dropdown-multicol2" aria-labelledby="dropdownMenuButton">
-            <div class="dropdown-col">
-              <a class="dropdown-item" href="products-males.php">Males</a>
-              <a class="dropdown-item" href="products-males.php">Shirts</a>
-              <a class="dropdown-item" href="products-males.php">T-Shirts</a>
-            </div>
-            <div class="dropdown-col">
-              <a class="dropdown-item" href="products-females.php">Females</a>
-              <a class="dropdown-item" href="products-females.php">Shirts</a>
-              <a class="dropdown-item" href="products-females.php">T-Shirts</a>
-            </div>
-            <div class="dropdown-col">
-              <a class="dropdown-item" href="products-kids.php">Kids</a>
-              <a class="dropdown-item" href="products-kids.php">Sweatshirts</a>
-              <a class="dropdown-item" href="products-kids.php">T-Shirts</a>
-            </div>
-        </li>
+        
+        
         <li class="nav-item dropdown">
           <?php 
             $login = Session::get("cuslogin");
@@ -185,6 +158,28 @@ $cmr = new Customer();
             <?php
                 }
             ?>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu dropdown-multicol2" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-col">
+              <a class="dropdown-item" href="products.php?brand=male"><b>Males</b></a>
+              <a class="dropdown-item" href="products.php?brand=male&cat=shirt">Shirts</a>
+              <a class="dropdown-item" href="products.php?brand=male&cat=tshirt">T-Shirts</a>
+            </div>
+            <div class="dropdown-col">
+              <a class="dropdown-item" href="products-females.php"><b>Females</b></a>
+              <a class="dropdown-item" href="products-females.php">Shirts</a>
+              <a class="dropdown-item" href="products-females.php">T-Shirts</a>
+            </div>
+            <div class="dropdown-col">
+              <a class="dropdown-item" href="products-kids.php"><b>Kids</b></a>
+              <a class="dropdown-item" href="products-kids.php">Sweatshirts</a>
+              <a class="dropdown-item" href="products-kids.php">T-Shirts</a>
+            </div>
         </li>
       </ul>
     </div>
