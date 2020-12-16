@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateCart = $ct->updateCartQuantity($cartId, $quantity);
     if ($quantity <= 0) {
 		$delProduct = $ct->delProductByCart($cartId);
-		?>
-		<script> location.replace("cart.php"); </script>
-		<?php
+		// ?>
+		// <script> location.replace("cart.php"); </script>
+		// <?php
     }
 }
  ?>
