@@ -65,7 +65,7 @@ $cmr = new Customer();
 </head>
 <body>
   <div class="wrap">
-    <div class="header_top">
+    <div class="header_top bg-dark">
       <div class="logo">
         <a href="index.php"><h1 style="font-size:50px;color:green;">T-Shirt Shop</h1></a>
       </div>
@@ -110,12 +110,12 @@ $cmr = new Customer();
  </div>
 
 <div class="menu">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <a class="navbar-brand" href="index.php">Home</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">He Thong Cua Hang</a>
+          <a class="nav-link" href="location.php">Locations</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Blogs</a>
