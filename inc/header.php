@@ -171,14 +171,14 @@ $cmr = new Customer();
               <a class="dropdown-item" href="products.php?brand=male&cat=tshirt">T-Shirts</a>
             </div>
             <div class="dropdown-col">
-              <a class="dropdown-item" href="products-females.php"><b>Females</b></a>
-              <a class="dropdown-item" href="products-females.php">Shirts</a>
-              <a class="dropdown-item" href="products-females.php">T-Shirts</a>
+            <a class="dropdown-item" href="products.php?brand=female"><b>Females</b></a>
+              <a class="dropdown-item" href="products.php?brand=female&cat=shirt">Shirts</a>
+              <a class="dropdown-item" href="products.php?brand=female&cat=tshirt">T-Shirts</a>
             </div>
             <div class="dropdown-col">
-              <a class="dropdown-item" href="products-kids.php"><b>Kids</b></a>
-              <a class="dropdown-item" href="products-kids.php">Sweatshirts</a>
-              <a class="dropdown-item" href="products-kids.php">T-Shirts</a>
+              <a class="dropdown-item" href="products.php?brand=kids"><b>Kids</b></a>
+              <a class="dropdown-item" href="products.php?brand=kids">Sweatshirts</a>
+              <a class="dropdown-item" href="products.php?brand=kids">T-Shirts</a>
             </div>
         </li>
       </ul>
