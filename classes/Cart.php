@@ -40,7 +40,8 @@ class Cart
             $query = "INSERT INTO tbl_cart(sId, productId, productName, price, quantity, image) VALUES('$sId', '$proId', '$productName', '$price', '$quantity', '$image')";
             $inserted_row = $this->db->insert($query);
             if ($inserted_row) {
-                header("Location:Cart.php");
+                //header("Location:Cart.php");
+                echo "<script> location.replace = 'cart.php' </script>"; 
             } else {
                 header("Location:404.php");
             }
@@ -65,7 +66,8 @@ class Cart
             WHERE cartId = '$cartId'";
         $updated_row = $this->db->update($query);
         if ($updated_row) {
-            header("Location:cart.php");
+            //header("Location:cart.php");
+            echo "<script> location.replace = 'cart.php' </script>";
         } else {
             $msg = "<span class='error'>Quantity Not Updated.</span>";
             return $msg;

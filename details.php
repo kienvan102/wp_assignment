@@ -7,6 +7,9 @@ if (isset($_GET['proId'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $quantity = $_POST['quantity'];
 	$addCart = $ct->addToCart($quantity, $proId);
+	?>
+	<script> window.location.replace("index.php"); </script>
+	<?php
 }
 ?>
 <?php 

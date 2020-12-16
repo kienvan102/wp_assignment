@@ -65,7 +65,7 @@ class Customer
         $pass  	= $this->fm->validation($data['pass']);
 
         $email 	= mysqli_real_escape_string($this->db->link, $email);
-        $pass 	= mysqli_real_escape_string($this->db->link, ($pass));
+        $pass 	= mysqli_real_escape_string($this->db->link, md5($pass));
 
         if (empty($email) || empty($pass)) {
             $msg = "<span class='error'>Fields must not be empty!</span>";
@@ -78,6 +78,7 @@ class Customer
             Session::set("cuslogin", true);
             Session::set("cmrId", $value['id']);
             Session::set("cmrName", $value['name']);
+            echo "<script> location.replace('index.php'); </script>";
             // header("Location:index.php");
         } else {
             $msg = "<span class='error'>Email or Passowrd not matched!</span>";
