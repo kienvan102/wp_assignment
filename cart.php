@@ -93,7 +93,8 @@ if (isset($delProduct)) {
 					   </table>
 					   <?php
                         } else {
-                            header("Location:index.php");
+							// header("Location:index.php");
+							echo "<script> location.replace = 'index.php' </script>";
                             // echo 'Cart Empty ! Please shop now.';
                         } ?>
 					</div>

@@ -300,6 +300,20 @@ class Product
         $query = "SELECT * FROM tbl_product WHERE catId = '2' ORDER BY productId DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
+    }   
+
+    public function getFemaleShirt()
+    {
+        $query = "SELECT * FROM tbl_product, tbl_category WHERE catName = 'Females Shirt' AND tbl_product.catId = tbl_category.catId ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getFemaleTshirt()
+    {
+        $query = "SELECT * FROM tbl_product, tbl_category WHERE catName = 'Females T-Shirt' AND tbl_product.catId = tbl_category.catId ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
     }
 
     public function getBrandProductMales()

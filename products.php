@@ -1,11 +1,13 @@
 <?php include 'inc/header.php'; ?>
 
 <?php
+$header = '';
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['brand'])) {
 	if ($_GET['brand'] == 'male') {
 		if (isset($_GET['cat'])) {
 			if ($_GET['cat'] == 'shirt') {
 				$results = $pd->getMaleShirt();
+				$header = "Male shirt";
 			}
 			else {
 				$results = $pd->getMaleTshirt();
@@ -15,8 +17,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['brand'])) {
 			$results = $pd->getBrandProductMales();
 		}
 	}
+	elseif ($_GET['brand'] == 'female') {
+		if (isset($_GET['cat'])) {
+			if ($_GET['cat'] == 'shirt') {
+				$results = $pd->getFemaleShirt();
+				$header = "Female shirt";
+			}
+			else {
+				$results = $pd->getFemaleTshirt();
+				$header = "Female T-shirt";
+			}
+		}
+		else {
+			$results = $pd->getBrandProductFemales();
+			$header = "Female products";
+		}
+	}
 	else {
-		$results = $pd->getBrandProductFemales();
+		$results = $pd->getBrandProductKids();
+		$header = "Kid products";
 	}
 }
 ?>
@@ -25,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['brand'])) {
     <div class="content">
     	<div class="content_top">
     		<div class="heading">
-    			<h3>Males Shirt</h3>
+    			<h3> <?php echo $header; ?> </h3>
     		</div>
     		<div class="clear"></div>
 		</div>

@@ -71,7 +71,7 @@ $cmr = new Customer();
   <div class="">
     <div class="">
       <div class="logo">
-        <a href="index.php"><h1 style="font-size:50px;color:green;">T-Shirt Shop</h1></a>
+        <a href="index.php"><h1 style="font-size:50px;color:purple;">T-SHIRT SHOP</h1></a>
       </div>
         <div class="header_top_right">
           <div class="search_box">
@@ -114,7 +114,7 @@ $cmr = new Customer();
  </div>
 
 <div class="menu">
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">Home</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
@@ -171,14 +171,14 @@ $cmr = new Customer();
               <a class="dropdown-item" href="products.php?brand=male&cat=tshirt">T-Shirts</a>
             </div>
             <div class="dropdown-col">
-              <a class="dropdown-item" href="products-females.php"><b>Females</b></a>
-              <a class="dropdown-item" href="products-females.php">Shirts</a>
-              <a class="dropdown-item" href="products-females.php">T-Shirts</a>
+            <a class="dropdown-item" href="products.php?brand=female"><b>Females</b></a>
+              <a class="dropdown-item" href="products.php?brand=female&cat=shirt">Shirts</a>
+              <a class="dropdown-item" href="products.php?brand=female&cat=tshirt">T-Shirts</a>
             </div>
             <div class="dropdown-col">
-              <a class="dropdown-item" href="products-kids.php"><b>Kids</b></a>
-              <a class="dropdown-item" href="products-kids.php">Sweatshirts</a>
-              <a class="dropdown-item" href="products-kids.php">T-Shirts</a>
+              <a class="dropdown-item" href="products.php?brand=kids"><b>Kids</b></a>
+              <a class="dropdown-item" href="products.php?brand=kids">Sweatshirts</a>
+              <a class="dropdown-item" href="products.php?brand=kids">T-Shirts</a>
             </div>
         </li>
       </ul>

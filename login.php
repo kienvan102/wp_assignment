@@ -2,7 +2,8 @@
 <?php 
 $login = Session::get("cuslogin");
 if ($login == true) {
-    header("Location:order.php");
+	// header("Location:order.php");
+	echo "<script> location.replace('order.php') </script>";
 }
  ?>
 <?php 
