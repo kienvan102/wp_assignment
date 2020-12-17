@@ -54,6 +54,7 @@ Session::checkSession();
                         <?php 
                         if (isset($_GET['action']) && $_GET['action'] == "logout") {
                             Session::destroy();
+                            header('location:index.php');
                         }
                          ?>
                     <div class="floatleft marginleft10">

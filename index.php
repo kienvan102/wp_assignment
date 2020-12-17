@@ -28,7 +28,7 @@
 				  }
 			  } ?>
 			  <br>
-			  <a class='more' href="products-males.php"> More >> </a>
+			  <a class='more' href="products.php?brand=male"> More >> </a>
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
@@ -53,7 +53,7 @@
                   }
               } ?>
 				<br>
-				<a class='more' href="products-males.php"> More >> </a>
+				<a class='more' href="products.php?brand=female"> More >> </a>
 			</div>
     </div>
  </div>

@@ -30,10 +30,10 @@ function showAllLocations(allData) {
 		strong.textContent = data.name;
 		content.appendChild(strong);
 
-		var img = document.createElement('img');
-		img.src = 'img/Leopard.jpg';
-		img.style.width = '100px';
-		content.appendChild(img);
+		// var img = document.createElement('img');
+		// img.src = 'img/Leopard.jpg';
+		// img.style.width = '100px';
+		// content.appendChild(img);
 
 		var marker = new google.maps.Marker({
 	      position: new google.maps.LatLng(data.lat, data.lng),

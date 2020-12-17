@@ -11,10 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['brand'])) {
 			}
 			else {
 				$results = $pd->getMaleTshirt();
+				$header = "Male T-shirt";
 			}
 		}
 		else {
 			$results = $pd->getBrandProductMales();
+			$header ="Male products";
 		}
 	}
 	elseif ($_GET['brand'] == 'female') {

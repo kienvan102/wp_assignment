@@ -11,7 +11,7 @@
 		}
 
 		public function getLocBlank() {
-			$sql = "SELECT * FROM $this->tableName WHERE lat IS NULL AND lng IS NULL";
+			$sql = "SELECT * FROM $this->tableName";
             $result = $this->conn->select($sql);
 			return $result;
 		}
