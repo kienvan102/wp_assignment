@@ -49,7 +49,7 @@ function showAllLocations(allData) {
 
 function codeAddress(cdata) {
    Array.prototype.forEach.call(cdata, function(data){
-    	var address = data.name + ' ' + data.address;
+    	var address = data.name;
 	    geocoder.geocode( { 'address': address}, function(results, status) {
 	      if (status == 'OK') {
 	        map.setCenter(results[0].geometry.location);

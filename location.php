@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                     <form action="" method="POST">
-                            <div class="form-group row justify-content-center mb-2">
+                            <div class="form-group row justify-content-center mb-2 mt-2">
                                 <label for="district" class="col-md-2 col-form-label text-center">District</label>
                                 <div class="col-12 col-md-6">
                                     <select class="form-control" id="district" name="district">
