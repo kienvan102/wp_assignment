@@ -77,6 +77,5 @@ Session::checkSession();
                 <li ><a href="../index.php"><span>Visit Website</span></a></li>
             </ul>
         </div>
-        <div class="clear">
         </div>
     

@@ -11,7 +11,7 @@
         <script type="text/javascript" src="js/locations.js"></script>
         <style type="text/css">
             .map-content {
-                height: 800px;
+                height: 700px;
                 width: 95%;
             }
             #map {
